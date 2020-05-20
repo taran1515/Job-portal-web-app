@@ -1,0 +1,21 @@
+{% extends "job/base.html" %}
+{% block body_block %}
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Welcome to the Job Portal !</h1>
+    {% if user.is_authenticated %}
+        <h2>Hello {{user.username}} </h2>
+        <h3>Here is your profile detail : </h3><br><br>
+        <h4>Name - {{user.username}}</h4>
+        <h4>Job role - {{ current_user.job_role }} </h4>
+        {% if current_user.profile_pic %}
+                  <h4>Profile pic - <br><img src="{{ current_user.profile_pic.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" /> </h4><br>
+        {% endif %}
+        <br><br><br><h4>Company - <a href="http://127.0.0.1:8000/company/">{{current_user.company}}</a></h4>
+    {% else %}
+        <h2>Register or Login if you'd like to</h2>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "job/base.html" %}
+{% block body_block %}
+
+<h1>Wan't to join {{ company.company_name }} ? </h1><br>
+<h1>Get the Details here: </h1>
+<br><br>
+<h4>Company Name - {{ company.company_name }}</h4>
+<h4>Profile pic - <br><img src="{{ company.logo.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" /> </h4><br>
+<h4>Address {{ company.address }}</h4>
+{% endblock %}

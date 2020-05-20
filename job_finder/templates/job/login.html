@@ -1,0 +1,17 @@
+{% extends 'job/base.html' %}
+{% block body_block %}
+  <div class="container">
+    <div class="jumbotron">
+      <h2>Login here :</h2>
+        <form method="post" action="{% url 'job:user_login' %}">
+          {% csrf_token %}
+          {# A more "HTML" way of creating the login form#}
+          <br>
+          <label for="username">Username:
+          <input type="text" name="username" placeholder="Username"><br><br>
+          <label for="password">Password:</label>
+          <input type="password" name="password" placeholder="Password"><br><br>
+          <input type="submit" name="" value="Login">
+        </form></div>
+  </div>
+{% endblock %}
