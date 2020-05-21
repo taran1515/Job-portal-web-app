@@ -22,6 +22,7 @@ from job import urls,views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name='index'),
+    path('tracking/', include('tracking.urls')),
     path('special/',views.special,name='special'),
     path('company/',views.company,name='company'),
     path('job/',include('job.urls')),

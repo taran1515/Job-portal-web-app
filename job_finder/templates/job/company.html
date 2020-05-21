@@ -1,10 +1,19 @@
 {% extends "job/base.html" %}
 {% block body_block %}
-
+{% load tracking_tags %}
 <h1>Wan't to join {{ company.company_name }} ? </h1><br>
 <h1>Get the Details here: </h1>
 <br><br>
-<h4>Company Name - {{ company.company_name }}</h4>
-<h4>Profile pic - <br><img src="{{ company.logo.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" /> </h4><br>
-<h4>Address {{ company.address }}</h4>
+<h4><b>Company Name</b> - {{ company.company_name }}</h4>
+<h4><b>Profile pic - </b><br><img src="{{ company.logo.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" /> </h4><br>
+<h4><b>Address - </b>{{ company.address }}</h4>
+<h4>
+    {% visitors_on_page as same_page %}
+<p>
+    <b>Users currently viewing this page  - </b>
+    {% for x in same_page %}
+    {{ x }} ,
+    {% endfor %}
+</p>
+</h4>
 {% endblock %}
