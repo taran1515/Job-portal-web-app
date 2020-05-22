@@ -16,10 +16,15 @@ def index(request):
 
 def company(request):
     curr_user = UserProfileInfo.objects.get(id=request.user.id-1)
-    # print(curr_user.company.id)
+    (curr_user.visited) = True
+    curr_user.save()
+
     company = Company.objects.get(id=curr_user.company.id)
+    total_views = UserProfileInfo.objects.filter(company=company,visited=True).count()
+    print(total_views)
+    count_hit = True
     # print(company.company_name)
-    return render(request,'job/company.html',{'company':company})
+    return render(request,'job/company.html',{'company':company,'total_views':total_views})
     
 @login_required
 def special(request):

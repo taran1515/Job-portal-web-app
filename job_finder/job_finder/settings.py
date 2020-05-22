@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'job',
     'tracking',
+    'hitcount',
 ]
 
 MIDDLEWARE = [
@@ -136,3 +137,8 @@ STATICFILES_DIRS = [STATIC_DIR,]
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 LOGIN_URL = '/job/user_login/'
+
+HITCOUNT_KEEP_HIT_ACTIVE = {'minutes': 60}
+HITCOUNT_HITS_PER_IP_LIMIT = 0  # unlimited
+HITCOUNT_EXCLUDE_USER_GROUP = ()  # not used
+HITCOUNT_KEEP_HIT_IN_DATABASE = {'seconds': 10}
