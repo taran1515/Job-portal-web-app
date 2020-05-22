@@ -15,14 +15,10 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'staticfiles')
 
 TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 STATIC_DIR = os.path.join(BASE_DIR,'static')
 MEDIA_DIR = os.path.join(BASE_DIR,'media')
-
-# heroku config:set DISABLE_COLLECTSTATIC=1
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -31,9 +27,9 @@ MEDIA_DIR = os.path.join(BASE_DIR,'media')
 SECRET_KEY = '-0l(*ul4^5)d(#gy9_%_jpw2j$(#%ko*u*h*dr8%_bz)nrvn)y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
