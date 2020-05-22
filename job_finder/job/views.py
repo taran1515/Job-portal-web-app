@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import UserProfileInfo,Company
+from django.contrib.auth.models import User
 from job.forms import UserForm,UserProfileInfoForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
@@ -8,30 +9,49 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):
     print(request.user.id)
-    if(request.user.id):
-        curr_user = UserProfileInfo.objects.get(id=request.user.id-1)
+    if(request.user.id is not None):
+        print(request.user.username)
+        user_id = User.objects.get(username=request.user.username)
+        print(user_id.id)
+        curr_user = UserProfileInfo.objects.get(id=user_id.id-1)
+        (curr_user.visited_company_page) = False
+        curr_user.save()
     else:
         curr_user = []
     return render(request,'job/index.html',{'current_user':curr_user})
 
 def company(request):
-    curr_user = UserProfileInfo.objects.get(id=request.user.id-1)
+    # print(request.user.username)
+    user_id = User.objects.get(username=request.user.username)
+    # print(user_id.id)
+    curr_user = UserProfileInfo.objects.get(id=user_id.id-1)
     (curr_user.visited) = True
+    curr_user.visited_company_page = True
     curr_user.save()
 
     company = Company.objects.get(id=curr_user.company.id)
     total_views = UserProfileInfo.objects.filter(company=company,visited=True).count()
-    print(total_views)
+    user_object = UserProfileInfo.objects.filter(visited_company_page=True)
+    currently_viewers = []
+    for j in user_object:
+        c = User.objects.filter(id=j.id+1)
+        currently_viewers.append(c[0])
     count_hit = True
     # print(company.company_name)
-    return render(request,'job/company.html',{'company':company,'total_views':total_views})
+    return render(request,'job/company.html',{'company':company,'total_views':total_views,'currently_viewers':currently_viewers})
     
 @login_required
 def special(request):
+    curr_user = UserProfileInfo.objects.get(id=request.user.id-1)
+    (curr_user.visited_company_page) = False
+    curr_user.save()
     return HttpResponse("You are logged in !")
     
 @login_required
 def user_logout(request):
+    curr_user = UserProfileInfo.objects.get(id=request.user.id-1)
+    (curr_user.visited_company_page) = False
+    curr_user.save()
     logout(request)
     return HttpResponseRedirect(reverse('index'))
     

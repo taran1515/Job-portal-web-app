@@ -11,8 +11,8 @@
     {% visitors_on_page as same_page %}
 <p>
     <b>Users currently viewing this page  - </b>
-    {% for x in same_page %}
-    {{ x }} ,
+    {% for viewer in currently_viewers %}
+    {{ viewer }}
     {% endfor %}
 </p>
 </h4>

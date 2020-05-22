@@ -25,6 +25,7 @@ class UserProfileInfo(models.Model):
     job_role = models.CharField(max_length=100)
     company = models.ForeignKey(Company,on_delete=models.CASCADE)
     visited = models.BooleanField(default=False)
+    visited_company_page = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.user)
