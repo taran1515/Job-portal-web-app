@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib.contenttypes.fields import GenericRelation
 
-from hitcount.models import HitCount, HitCountMixin
 
 # Create your models here.
 
@@ -11,7 +9,6 @@ class Company(models.Model):
     company_name = models.CharField(max_length=50)
     logo = models.ImageField(upload_to='company',blank=True)
     address = models.CharField(max_length=100)
-    hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',related_query_name='hit_count_generic_relation')
     
 
     def __str__(self):
