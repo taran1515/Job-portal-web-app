@@ -1,7 +1,7 @@
 asgiref==3.2.7
 certifi==2020.4.5.1
 chardet==3.0.4
-Django==3.0.6
+Django==3.1.6
 django-hitcount==1.3.2
 django-tracking @ git+https://github.com/bashu/django-tracking.git@f6883f8759bc645a3aeb7b77cced8e95b84e46de
 geoip2==3.0.0
