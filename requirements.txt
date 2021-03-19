@@ -7,7 +7,7 @@ django-tracking @ git+https://github.com/bashu/django-tracking.git@f6883f8759bc6
 geoip2==3.0.0
 idna==2.9
 maxminddb==1.5.4
-Pillow==7.1.2
+Pillow==8.1.1
 python-memcached==1.59
 pytz==2020.1
 requests==2.23.0
